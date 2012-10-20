@@ -222,6 +222,27 @@ void UpdateStateMachine(ServoState& state)
 		}
 		state.lastMode = PulseClose;
 		break;
+        case SlowJabber:
+                state.lastMode = SlowJabber;
+		if (state.angle <= state.minAngle)
+		{
+			state.flag = true;
+		}
+		else if (state.angle >= state.maxAngle)
+		{
+			state.flag = false;
+		}
+		if (state.flag)
+		{
+			state.angle += SlowJabberIncrement;
+		}
+		else
+		{
+			state.angle -= SlowJabberIncrement;
+		}
+		break;
+        case StopArduino:
+                while(1); 
 	default:
 		break;
 	}
@@ -243,11 +264,6 @@ void CheckSchedule(ServoState& state, StateEntry& entry)
 
 void loop()
 {
-  
-  /*while(1)
-  {
-     jaw(); 
-  }*/
         m.time = pgm_read_dword(&(michaelStates[michaelState.schedIdx].time));
         m.mode = pgm_read_byte(&(michaelStates[michaelState.schedIdx].mode));
         v.time = pgm_read_dword(&(vincentStates[vincentState.schedIdx].time));
