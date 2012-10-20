@@ -242,7 +242,11 @@ void UpdateStateMachine(ServoState& state)
 		}
 		break;
         case StopArduino:
-                while(1); 
+                while(1);
+                break; 
+        case Hold90:
+                state.angle = 90;
+                break;
 	default:
 		break;
 	}

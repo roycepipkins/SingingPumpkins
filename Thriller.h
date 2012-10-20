@@ -22,14 +22,16 @@ struct StateEntry
 
 enum States
 {
-        StopArduino = 0,
+        
 	FastJabber = 1,
 	SlowClose = 2,
 	FastClose = 3,
 	FastOpen = 4,
 	HoldOpen = 5,
 	PulseClose = 6,
-        SlowJabber = 7
+        SlowJabber = 7,
+        Hold90 = 8,
+        StopArduino = 9,
 };
 
 const uint8_t FastJabberIncrement = 12;
@@ -51,8 +53,8 @@ const uint8_t littlePumpkinMax = 170;
 StateEntry littlePumpkinStates[] PROGMEM =
 {
 {17500, 7},
-{312081, 2},
-{999999, 0}
+{312081, 8},
+{999999, 9}
 };
 
 
@@ -97,7 +99,7 @@ StateEntry vincentStates[] PROGMEM =
 {343916,	2	/*SLOW_CLOSE*/},
 {344860,	1	/*FAST_JABBER*/},	
 {354932,	2	/*SLOW_CLOSE*/},
-{999999,        0       /*STOP*/}	
+{999999,        9       /*STOP*/}	
 };
 
 StateEntry michaelStates[] PROGMEM =
@@ -279,5 +281,5 @@ StateEntry michaelStates[] PROGMEM =
 {299967,	2	/*SLOW_CLOSE*/},	
 {300857,	1	/*FAST_JABBER*/},	
 {312081,	2	/*SLOW_CLOSE*/},
-{999999,        0       /*STOP*/}
+{999999,        9       /*STOP*/}
 };
