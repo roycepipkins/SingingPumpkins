@@ -32,6 +32,7 @@ enum States
         SlowJabber = 7,
         Hold90 = 8,
         StopArduino = 9,
+        RestartArduino = 10
 };
 
 const uint8_t FastJabberIncrement = 12;
@@ -99,7 +100,7 @@ StateEntry vincentStates[] PROGMEM =
 {343916,	2	/*SLOW_CLOSE*/},
 {344860,	1	/*FAST_JABBER*/},	
 {354932,	2	/*SLOW_CLOSE*/},
-{999999,        9       /*STOP*/}	
+{414932,        10       /*RESTART*/}	
 };
 
 StateEntry michaelStates[] PROGMEM =

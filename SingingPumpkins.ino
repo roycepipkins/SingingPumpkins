@@ -134,7 +134,10 @@ void setup()
   playfile("Thriller.wav");
 }
 
-
+void softReset()
+{
+asm volatile ("  jmp 0");
+}
 
 void UpdateServos()
 {
@@ -244,6 +247,9 @@ void UpdateStateMachine(ServoState& state)
         case StopArduino:
                 while(1);
                 break; 
+        case RestartArduino:
+                softReset();
+                break;
         case Hold90:
                 state.angle = 90;
                 break;
